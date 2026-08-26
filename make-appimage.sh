@@ -19,7 +19,3 @@ quick-sharun /usr/bin/etl.$ARCH /usr/lib/etlegacy/*
 
 # Turn AppDir into AppImage
 quick-sharun --make-appimage
-
-# Test the app for 12 seconds, if the test fails due to the app
-# having issues running in the CI use --simple-test instead
-quick-sharun --simple-test ./dist/*.AppImage

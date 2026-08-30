@@ -12,7 +12,7 @@ export ICON=/usr/share/icons/hicolor/scalable/apps/etl.svg
 export DESKTOP=/usr/share/applications/com.etlegacy.ETLegacy.$ARCH.desktop
 export APPNAME="ET Legacy"
 export STARTUPWMCLASS=etl.$ARCH
-export USE_HOST_DRIVERS_EXPERIMENTAL=1
+export DEPLOY_OPENGL=1
 
 # Deploy dependencies
 quick-sharun /usr/bin/etl.$ARCH /usr/lib/etlegacy/*

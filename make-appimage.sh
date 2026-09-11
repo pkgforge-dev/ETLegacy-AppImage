@@ -15,7 +15,7 @@ export STARTUPWMCLASS=etl.$ARCH
 export DEPLOY_OPENGL=1
 
 # Deploy dependencies
-quick-sharun /usr/bin/etl.$ARCH /usr/lib/etlegacy/*
+quick-sharun /usr/bin/etl.$ARCH /usr/lib/etlegacy/* /usr/lib/libopenal.so*
 
 # Turn AppDir into AppImage
 quick-sharun --make-appimage

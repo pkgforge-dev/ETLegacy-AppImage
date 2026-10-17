@@ -57,10 +57,10 @@ ln -s /usr/share/enemy-territory/etmain/*.pk3 /usr/lib/etlegacy/etmain/
 
 mkdir -p /etc/xdg/etlegacy/etmain
 mkdir -p /usr/lib/systemd/system
-install -m 644 ./etlegacy/misc/etlegacy.conf /etc/xdg/etlegacy/
-install -m 644 ./etlegacy/misc/etlegacy.${ARCH}.service /usr/lib/systemd/system/
+mv -v ./etlegacy/misc/etlegacy.conf /etc/xdg/etlegacy/
+mv -v ./etlegacy/misc/etlegacy.${ARCH}.service /usr/lib/systemd/system/
 
-mv /usr/lib/etlegacy/etmain/*.cfg /etc/xdg/etlegacy/etmain/
+mv -v /usr/lib/etlegacy/etmain/*.cfg /etc/xdg/etlegacy/etmain/
 ln -s /etc/xdg/etlegacy/etmain/{etl_server,legacy,{campaign,lms,mapvote,objective}cycle}.cfg /usr/lib/etlegacy/etmain/
 
 mkdir -p /var/lib/etlegacy-server

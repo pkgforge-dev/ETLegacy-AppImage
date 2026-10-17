@@ -15,7 +15,6 @@ pacman -Syu --noconfirm \
     lua54         \
     minizip       \
     openal        \
-    sqlite        \
     sdl2-compat
 
 echo "Installing debloated packages..."

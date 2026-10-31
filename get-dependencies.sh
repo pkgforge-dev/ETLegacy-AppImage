@@ -28,13 +28,13 @@ VERSION="$(git ls-remote "$REPO" HEAD | cut -c 1-9 | head -1)"
 git clone --recursive --depth 1 "$REPO" ./etlegacy
 echo "$VERSION" > ~/version
 
-wget http://filebase.trackbase.net/et/full/et260b.x86_full.zip
-bsdtar -xvf ./et260b.x86_full.zip
-chmod +x et260b.x86_keygen_V03.run
-./et260b.x86_keygen_V03.run --noexec --nox11 --target enemy-territory
-rm -rf ./*.run ./*.zip
-mkdir -p ./AppDir/share/enemy-territory/etmain
-mv -v ./enemy-territory/etmain/{pak0,pak1,pak2}.pk3 ./AppDir/share/enemy-territory/etmain
+wget https://mirror.etlegacy.com/et260b.x86_keygen_V03.run.zip
+bsdtar -xf ./et260b.x86_keygen_V03.run.zip
+sh ./et260b.x86_keygen_V03.run --noexec --nox11 --target enemy-territory
+rm -rf ./et260b.x86_keygen_V03.run.zip ./et260b.x86_keygen_V03.run './readme first !!! et260b'
+mkdir -p /usr/lib/etlegacy/etmain
+mv -v ./enemy-territory/etmain/pak0.pk3 ./enemy-territory/etmain/pak1.pk3 ./enemy-territory/etmain/pak2.pk3 /usr/lib/etlegacy/etmain/
+rm -rf ./enemy-territory
 
 cmake -S ./etlegacy -B build \
     -D CMAKE_BUILD_TYPE=Release \
@@ -52,16 +52,3 @@ cmake -S ./etlegacy -B build \
     -D INSTALL_OMNIBOT=0
 cmake --build build -j$(nproc)
 cmake --install build
-
-ln -s /usr/share/enemy-territory/etmain/*.pk3 /usr/lib/etlegacy/etmain/
-
-mkdir -p /etc/xdg/etlegacy/etmain
-mkdir -p /usr/lib/systemd/system
-mv -v ./etlegacy/misc/etlegacy.conf /etc/xdg/etlegacy/
-mv -v ./etlegacy/misc/etlegacy.${ARCH}.service /usr/lib/systemd/system/
-
-mv -v /usr/lib/etlegacy/etmain/*.cfg /etc/xdg/etlegacy/etmain/
-ln -s /etc/xdg/etlegacy/etmain/{etl_server,legacy,{campaign,lms,mapvote,objective}cycle}.cfg /usr/lib/etlegacy/etmain/
-
-mkdir -p /var/lib/etlegacy-server
-ln -s /etc/xdg/etlegacy/etmain /var/lib/etlegacy-server/
